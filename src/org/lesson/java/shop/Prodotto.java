@@ -9,14 +9,6 @@ public class Prodotto {
 	double price;
 	int iva = 22; // 22
 
-	/**
-	 * Constructor all variable
-	 * 
-	 * @param name
-	 * @param description
-	 * @param price
-	 * @param iva
-	 */
 	public Prodotto(double price) {
 		Random rand = new Random();
 		this.cod = rand.nextInt(100000000);
