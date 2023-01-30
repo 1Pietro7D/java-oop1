@@ -16,13 +16,20 @@ public class Bank {
 		newConto.userAccount = r.nextInt(999) + 1;
 
 		String userChoise = "";
-
-		while (userChoise.equals("3") || !userChoise.equals("exit")) { // a differenza degli if interni non posso usare
+		int numberChoise = 0;
+		while (!userChoise.equals("3") || !userChoise.equals("exit")) { // a differenza degli if interni non posso usare
 																		// Integer.parseInt(userChoise) != 3
-			System.out.print("what do you want to do? 1-Add 2-Get 3-Exit -> ");
-			userChoise = s.nextLine().toLowerCase().trim();
+			while (userChoise.equals("")) {
+				System.out.print("what do you want to do? 1-Add 2-Get 3-Exit -> ");
+				userChoise = s.nextLine().toLowerCase().trim();
+				try {
+					numberChoise = Integer.parseInt(userChoise);
+				} catch (NumberFormatException e) {
+					numberChoise = 0;
+				}
+			}
 
-			if (Integer.parseInt(userChoise) == 1 || userChoise.equals("add")) {
+			if (userChoise.equals("add") || numberChoise == 1) {
 				System.out.println("how much do you want to deposit?");
 				double money = Double.parseDouble(s.nextLine().replace(",", "."));
 				double moneyCheck = Double.parseDouble(String.format("%.2f", money).replace(",", "."));// Refactoring!!
@@ -31,7 +38,8 @@ public class Bank {
 																										// classe Bank
 				newConto.addCash(moneyCheck);
 				System.out.println(newConto.userAccount + " now your total is :" + newConto.balance + "€");
-			} else if (Integer.parseInt(userChoise) == 2 || userChoise.equals("get")) {
+				userChoise = "";
+			} else if (userChoise.equals("get") || numberChoise == 2) {
 				System.out.println("how much do you want to withdraw?");
 				double money = Double.parseDouble(s.nextLine().replace(",", "."));
 				double moneyCheck = Double.parseDouble(String.format("%.2f", money).replace(",", ".")); // Refactoring!!
@@ -41,9 +49,11 @@ public class Bank {
 				boolean verify = newConto.takeCash(moneyCheck);
 				if (!verify) {
 					System.out.println("you cannot withdraw all this money");
-				} else
+				} else {
 					System.out.println(newConto.userAccount + " now your total is :" + newConto.balance + "€");
-			} else if (Integer.parseInt(userChoise) == 3 || userChoise.equals("exit")) {
+					userChoise = "";
+				}
+			} else if (userChoise.equals("exit") || numberChoise == 3) {
 				System.out.println(
 						"Good by " + newConto.username.substring(0, 1).toUpperCase() + newConto.username.substring(1)); // Refactoring!!
 																														// convertire
@@ -56,6 +66,7 @@ public class Bank {
 				break;
 			} else {
 				System.out.println("your choice is invalid, please choose between 1 and 3");
+				userChoise = "";
 			}
 		}
 		;
