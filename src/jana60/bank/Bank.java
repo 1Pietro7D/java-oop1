@@ -37,7 +37,7 @@ public class Bank {
 																										// classe Bank
 				newConto.addCash(moneyCheck);
 				System.out.println(newConto.userAccount + " now your total is :" + newConto.balance + "€");
-				userChoise = "";
+				
 			} else if (userChoise.equals("get") || numberChoise == 2) {
 				System.out.println("how much do you want to withdraw?");
 				double money = Double.parseDouble(s.nextLine().replace(",", "."));
@@ -50,7 +50,6 @@ public class Bank {
 					System.out.println("you cannot withdraw all this money");
 				} else {
 					System.out.println(newConto.userAccount + " now your total is :" + newConto.balance + "€");
-					userChoise = "";
 				}
 			} else if (userChoise.equals("exit") || numberChoise == 3) {
 				System.out.println(
@@ -65,7 +64,7 @@ public class Bank {
 				
 			} else {
 				System.out.println("your choice is invalid, please choose between 1 and 3");
-				userChoise = "";
+				
 			}
 		}
 		;
