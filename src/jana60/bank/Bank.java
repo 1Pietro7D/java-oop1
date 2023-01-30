@@ -17,7 +17,8 @@ public class Bank {
 
 		String userChoise = "";
 		int numberChoise = 0;
-		while (true) {
+		while (numberChoise != 3 && !userChoise.equals("exit")) {
+			System.out.print(numberChoise);
 				System.out.print("what do you want to do? 1-Add 2-Get 3-Exit -> ");
 				userChoise = s.nextLine().toLowerCase().trim();
 				try {
@@ -61,7 +62,7 @@ public class Bank {
 																														// in
 																														// classe
 																														// Conto
-				break;
+				
 			} else {
 				System.out.println("your choice is invalid, please choose between 1 and 3");
 				userChoise = "";
