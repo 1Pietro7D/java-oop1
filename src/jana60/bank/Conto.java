@@ -29,43 +29,7 @@ public class Conto {
 		}
 	}
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-		Random r = new Random();
-		Scanner s = new Scanner(System.in);
-		System.out.print("what your name -> ");
-		String name = s.nextLine().toLowerCase().trim();
-		Conto newConto = new Conto(name);
-		newConto.userAccount = r.nextInt(999) + 1;
-
-		String userChoise = "";
-		while (userChoise != "3" || !userChoise.equals("exit")) {
-			System.out.print("what do you want to do? 1-Add 2-Get 3-Exit -> ");
-			userChoise = s.nextLine().toLowerCase().trim();
-			System.out.println(userChoise);
-			if (Integer.parseInt(userChoise) == 1 || userChoise.equals("add")) {
-				System.out.println("how much do you want to deposit?");
-				double money = Double.parseDouble(s.nextLine().replace(",", "."));
-				double moneyCheck = Double.parseDouble(String.format("%.2f", money).replace(",", "."));
-				newConto.addCash(moneyCheck);
-				System.out.println("now your total is :" + newConto.balance);
-			} else if (Integer.parseInt(userChoise) == 2 || userChoise.equals("get")) {
-				System.out.println("how much do you want to withdraw?");
-				double money = Double.parseDouble(s.nextLine().replace(",", "."));
-				double moneyCheck = Double.parseDouble(String.format("%.2f", money).replace(",", "."));
-				boolean verify = newConto.takeCash(moneyCheck);
-				if (!verify) {
-					System.out.println("you cannot withdraw all this money");
-				} else 
-					System.out.println("now your total is :" + newConto.balance);
-			}else if(Integer.parseInt(userChoise) == 3 || userChoise.equals("exit")) 
-			{System.out.println("Good by");
-			}else {System.out.println("your choice is invalid, please choose between 1 and 3");}
-		}
-		;
-		s.close();
-	}
+	
 }
 
 /*
