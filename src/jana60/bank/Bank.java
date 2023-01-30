@@ -17,9 +17,7 @@ public class Bank {
 
 		String userChoise = "";
 		int numberChoise = 0;
-		while (!userChoise.equals("3") || !userChoise.equals("exit")) { // a differenza degli if interni non posso usare
-																		// Integer.parseInt(userChoise) != 3
-			while (userChoise.equals("")) {
+		while (true) {
 				System.out.print("what do you want to do? 1-Add 2-Get 3-Exit -> ");
 				userChoise = s.nextLine().toLowerCase().trim();
 				try {
@@ -27,7 +25,7 @@ public class Bank {
 				} catch (NumberFormatException e) {
 					numberChoise = 0;
 				}
-			}
+			
 
 			if (userChoise.equals("add") || numberChoise == 1) {
 				System.out.println("how much do you want to deposit?");
